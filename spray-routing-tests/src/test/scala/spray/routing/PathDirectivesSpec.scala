@@ -148,6 +148,12 @@ class PathDirectivesSpec extends RoutingSpec with NoAutoHtmlLinkFragments {
     "accept [/a/b/c/]" in test("List(a, b, c):/")
   }
 
+  "pathPrefix(IgnoredSegment)" should {
+    val test = testFor(pathPrefix(IgnoredSegment) { echoUnmatchedPath })
+    "accept [/abc]" in test("")
+    "accept [/abc/def]" in test("/def")
+  }
+
   """pathPrefix(separateOnSlashes("a/b"))""" should {
     val test = testFor(pathPrefix(separateOnSlashes("a/b")) { echoUnmatchedPath })
     "accept [/a/b]" in test("")

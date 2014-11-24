@@ -407,6 +407,16 @@ trait PathMatchers {
   }
 
   /**
+   * A PathMatcher that matches and ignores the unmatched path if it starts with a path segment.
+   */
+  object IgnoredSegment extends PathMatcher0 {
+    def apply(path: Path) = path match {
+      case Path.Segment(_, tail) ⇒ Matched(tail, HNil)
+      case _                     ⇒ Unmatched
+    }
+  }
+
+  /**
    * A PathMatcher that matches all remaining segments as a List[String].
    * This can also be no segments resulting in the empty list.
    * If the path has a trailing slash this slash will *not* be matched.

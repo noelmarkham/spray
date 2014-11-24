@@ -65,6 +65,9 @@ that *spray-routing* already provides for you:
   Matches if the unmatched path starts with a path segment (i.e. not a slash).
   If so the path segment is extracted as a ``String`` instance.
 
+``IgnoredSegment: PathMatcher0``
+  Matches and ignores the unmatched path if it starts with a path segment (i.e. not a slash).
+
 ``PathEnd: PathMatcher0``
   Matches the very end of the path, similar to ``$`` in regular expressions and extracts nothing.
 
